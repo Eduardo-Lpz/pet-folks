@@ -1,0 +1,20 @@
+fix: false              # default: false
+parallel: true          # default: false
+format: progress        # default: Standard::Formatter
+ruby_version: 3.1.0     # default: RUBY_VERSION
+default_ignores: false  # default: true
+
+ignore:                 # default: []
+  # Match RuboCop's defaults: https://github.com/rubocop-hq/rubocop/blob/v0.61.1/config/default.yml#L60-L63
+  - ".git/**/*"
+  - "node_modules/**/*"
+  - "vendor/**/*"
+  # Standard's own default ignores:
+  - 'bin/**/*'
+  # - 'db/schema.rb'
+  - "tmp/**/*"
+
+  - 'config/environments/**/*'
+  - 'config/application.rb'
+  - 'config/boot.rb'
+  - 'config/puma.rb'
