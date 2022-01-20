@@ -1,0 +1,8 @@
+valid_shelter:
+  name: shelter_name
+  address: shelter_address
+  # phone: 000-000-000-00-00
+  phone: 0003334444
+  email: shelter@email.com
+  link: http://shelter_site.com
+  description: shelter_description

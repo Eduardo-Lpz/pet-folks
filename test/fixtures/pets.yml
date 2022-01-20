@@ -1,0 +1,13 @@
+valid_pet:
+  shelter: valid_shelter
+  specie: dog
+  name: one_name
+  breed: one_breed
+  gender: male
+  age: puppy
+  size: small
+  coat: one_coat
+  color: one_color
+  special_needs: false
+  description: one_name is very cute dog
+  is_adopted: false

@@ -1,0 +1,8 @@
+valid_customer:
+  shelter: valid_shelter
+  name: customer_name
+  last_name: last_name
+  email: customer@mail.com
+  password_digest: <%= BCrypt::Password.create("password") %>
+  address: customer_address
+  phone: 00033334444
