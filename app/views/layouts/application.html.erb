@@ -8,9 +8,21 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "shared/navbar" %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <main>
+      <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <%= yield %>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
