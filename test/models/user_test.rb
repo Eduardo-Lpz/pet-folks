@@ -7,7 +7,6 @@ class UserTest < ActiveSupport::TestCase
 
   test "user is invalid when name is invalid" do
     user = users(:valid_user)
-    assert user.valid?
 
     user.name = nil
     refute user.valid?
@@ -40,7 +39,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.valid?
 
     user.email = nil
-    assert user.valid?
+    refute user.valid?
   end
   test "user is invalid when address is invalid" do
     user = users(:valid_user)

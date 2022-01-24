@@ -13,8 +13,3 @@ ignore:                 # default: []
   - 'bin/**/*'
   # - 'db/schema.rb'
   - "tmp/**/*"
-
-  - 'config/environments/**/*'
-  - 'config/application.rb'
-  - 'config/boot.rb'
-  - 'config/puma.rb'

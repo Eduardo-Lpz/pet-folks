@@ -1,9 +1,12 @@
 class Customer < ApplicationRecord
+  devise :database_authenticatable,
+    :recoverable,
+    :rememberable,
+    :validatable
+
   include AccountDetailConcern
 
   belongs_to :shelter
-
-  has_secure_password
 
   validates :name, presence: true, length: {maximum: 30}
   validates :last_name, presence: true, length: {maximum: 30}

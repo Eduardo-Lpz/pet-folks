@@ -44,7 +44,7 @@ class CustomerTest < ActiveSupport::TestCase
     assert customer.valid?
 
     customer.email = nil
-    assert customer.valid?
+    refute customer.valid?
   end
   test "customer is invalid when address is invalid" do
     customer = customers(:valid_customer)

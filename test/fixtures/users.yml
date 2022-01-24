@@ -1,7 +1,7 @@
 valid_user:
   name: user_name
   last_name: last_name
-  email: user@mail.com
-  password_digest: <%= BCrypt::Password.create("password") %>
   address: user_address
   phone: 00033334444
+  email: user@mail.com
+  encrypted_password: <%= BCrypt::Password.create("password") %>
