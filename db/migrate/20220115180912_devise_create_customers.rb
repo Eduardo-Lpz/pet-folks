@@ -3,11 +3,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[7.0]
     create_table :customers, id: :uuid do |t|
       t.belongs_to :shelter, type: :uuid, foreign_key: true, index: {unique: true}
 
-      t.string :name
-      t.string :last_name
-      t.string :address
-      t.string :phone
-
       ## Database authenticatable
       t.string :email, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

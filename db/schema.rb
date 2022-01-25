@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_135251) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
@@ -37,10 +38,6 @@ ActiveRecord::Schema.define(version: 2022_01_18_135251) do
 
   create_table "customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "shelter_id"
-    t.string "name"
-    t.string "last_name"
-    t.string "address"
-    t.string "phone"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -72,21 +69,22 @@ ActiveRecord::Schema.define(version: 2022_01_18_135251) do
   end
 
   create_table "shelters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.string "address", null: false
+    t.string "name", default: "", null: false
+    t.string "address", default: "", null: false
+    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
     t.string "phone", null: false
-    t.string "email", null: false
-    t.string "link", null: false
-    t.text "description", null: false
+    t.string "link", default: ""
+    t.text "description", default: ""
+    t.boolean "is_rescuer", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_shelters_on_name", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "last_name"
     t.string "address"
+    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
     t.string "phone"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

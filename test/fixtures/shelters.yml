@@ -1,8 +1,8 @@
 valid_shelter:
   name: shelter_name
-  address: shelter_address
-  # phone: 000-000-000-00-00
+  address: ""
+  lonlat: <%= RGeo::Cartesian.factory.point(-116.91727067614308, 32.484628807699515) %>
   phone: 0003334444
-  email: shelter@email.com
   link: http://shelter_site.com
   description: shelter_description
+  is_rescuer: false

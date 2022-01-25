@@ -4,10 +4,7 @@ class Customer < ApplicationRecord
     :rememberable,
     :validatable
 
-  include AccountDetailConcern
-
   belongs_to :shelter
 
-  validates :name, presence: true, length: {maximum: 30}
-  validates :last_name, presence: true, length: {maximum: 30}
+  validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, uniqueness: {case_sensitive: false}, unless: proc { |c| c.email.blank? }
 end

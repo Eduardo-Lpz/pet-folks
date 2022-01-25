@@ -4,6 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :last_name
       t.string :address
+      t.st_point :lonlat, geographic: true
       t.string :phone
 
       ## Database authenticatable
