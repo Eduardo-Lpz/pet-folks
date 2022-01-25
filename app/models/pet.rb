@@ -2,6 +2,7 @@ class Pet < ApplicationRecord
   include PetCharacteristicConcern
 
   belongs_to :shelter
+  has_many_attached :images
 
   validates :name, length: {maximum: 20}
   validates :coat, length: {maximum: 20}
