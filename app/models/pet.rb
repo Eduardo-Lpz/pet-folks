@@ -4,9 +4,10 @@ class Pet < ApplicationRecord
   belongs_to :shelter
   has_many_attached :images
 
-  validates :name, length: {maximum: 20}
-  validates :coat, length: {maximum: 20}
-  validates :color, length: {maximum: 20}
-  validates :description, length: {maximum: 500}
+  validates :name, presence: true, length: {maximum: 20}
+  validates :breed, presence: true, length: {maximum: 30}
+  validates :coat, presence: true, length: {maximum: 20}
+  validates :color, presence: true, length: {maximum: 20}
+  validates :description, presence: true, length: {maximum: 500}
   validates :is_adopted, inclusion: [true, false]
 end

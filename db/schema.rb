@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.boolean "special_needs", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_adoption_preferences_on_user_id", unique: true
+    t.index ["user_id"], name: "index_adoption_preferences_on_user_id"
   end
 
   create_table "customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-    t.index ["shelter_id"], name: "index_customers_on_shelter_id", unique: true
+    t.index ["shelter_id"], name: "index_customers_on_shelter_id"
   end
 
   create_table "pets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.boolean "is_adopted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["shelter_id"], name: "index_pets_on_shelter_id", unique: true
+    t.index ["shelter_id"], name: "index_pets_on_shelter_id"
   end
 
   create_table "shelters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

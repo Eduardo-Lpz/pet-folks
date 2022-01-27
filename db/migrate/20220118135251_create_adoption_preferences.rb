@@ -1,7 +1,7 @@
 class CreateAdoptionPreferences < ActiveRecord::Migration[7.0]
   def change
     create_table :adoption_preferences, id: :uuid do |t|
-      t.belongs_to :user, type: :uuid, foreign_key: true, index: {unique: true}
+      t.belongs_to :user, type: :uuid, foreign_key: true
 
       t.enum :specie, enum_type: "specie", null: false
       t.string :breed
