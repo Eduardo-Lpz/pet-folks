@@ -6,7 +6,7 @@ class CreatePets < ActiveRecord::Migration[7.0]
     create_enum :size, %w[small medium large extralarge]
 
     create_table :pets, id: :uuid do |t|
-      t.belongs_to :shelter, type: :uuid, foreign_key: true
+      t.belongs_to :user, type: :uuid, foreign_key: true
 
       t.enum :specie, enum_type: "specie", null: false
       t.string :name

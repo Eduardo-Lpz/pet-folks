@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "adoption_preferences", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id"
+  create_table "adopter_preferences", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "adopter_id"
     t.enum "specie", null: false, enum_type: "specie"
     t.string "breed"
     t.enum "gender", null: false, enum_type: "gender"
@@ -61,25 +61,21 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.boolean "special_needs", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_adoption_preferences_on_user_id"
+    t.index ["adopter_id"], name: "index_adopter_preferences_on_adopter_id"
   end
 
-  create_table "customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "shelter_id"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+  create_table "adopters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "last_name"
+    t.string "address"
+    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
+    t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_customers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-    t.index ["shelter_id"], name: "index_customers_on_shelter_id"
   end
 
   create_table "pets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "shelter_id"
+    t.uuid "user_id"
     t.enum "specie", null: false, enum_type: "specie"
     t.string "name"
     t.string "breed"
@@ -93,7 +89,16 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.boolean "is_adopted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["shelter_id"], name: "index_pets_on_shelter_id"
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "rescuers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
+    t.string "phone", null: false
+    t.text "description", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shelters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -103,17 +108,13 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.string "phone", null: false
     t.string "link", default: ""
     t.text "description", default: ""
-    t.boolean "is_rescuer", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.string "last_name"
-    t.string "address"
-    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
-    t.string "phone"
+    t.string "userable_type", null: false
+    t.uuid "userable_id", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -123,11 +124,11 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["userable_type", "userable_id"], name: "index_users_on_userable", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "adoption_preferences", "users"
-  add_foreign_key "customers", "shelters"
-  add_foreign_key "pets", "shelters"
+  add_foreign_key "adopter_preferences", "adopters"
+  add_foreign_key "pets", "users"
 end
