@@ -1,16 +1,6 @@
 <%= current_user %>
 <p>---------</p>
-<%= current_user.name if current_user%>
+<%= current_user&.userable&.model_name %>
 <p>---------</p>
-<%= link_to "User Log In", new_user_session_path, class:"bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" %>
-<p>---------</p>
-<%= button_to "User Delete", destroy_user_session_path, method: :delete, class: 'bg-blue-900 text-white px-3 py-2 rounded-md text-sm font-medium', "data-turbo": false %>
-<p>---------</p>
-<p>---------</p>
-<p>---------</p>
-<%= current_customer %>
-<p>---------</p>
-<%= link_to "Customer Log In", new_customer_session_path, class:"bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" %>
-<p>---------</p>
-<%= button_to "Customer Delete", destroy_customer_session_path, method: :delete, class: 'bg-blue-900 text-white px-3 py-2 rounded-md text-sm font-medium', "data-turbo": false %>
+<%= current_user.userable.name if current_user%>
 <p>---------</p>

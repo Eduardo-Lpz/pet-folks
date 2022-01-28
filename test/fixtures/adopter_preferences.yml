@@ -1,5 +1,5 @@
-valid_adoption_preference:
-  user: valid_user
+valid_adopter_preference:
+  adopter: valid_adopter
   specie: dog
   breed: one_breed
   gender: male

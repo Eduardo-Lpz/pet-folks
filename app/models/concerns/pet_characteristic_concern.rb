@@ -13,10 +13,10 @@ module PetCharacteristicConcern
     }
 
     validates :specie, presence: true
-    # validates :breed, length: {maximum: 20}
     validates :gender, presence: true
     validates :age, presence: true
     validates :size, presence: true
+
     validates :special_needs, inclusion: [true, false]
   end
 end

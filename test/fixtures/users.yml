@@ -1,8 +1,14 @@
-valid_user:
-  name: user_name
-  last_name: last_name
-  address: user_address
-  lonlat: <%= RGeo::Cartesian.factory.point(-116.91727067614308, 32.484628807699515) %>
-  phone: 00033334444
-  email: user@mail.com
+valid_shelter_user:
+  email: shelter@mail.com
   encrypted_password: <%= BCrypt::Password.create("password") %>
+  userable: valid_shelter (Shelter)
+
+valid_rescuer_user:
+  email: rescuer@mail.com
+  encrypted_password: <%= BCrypt::Password.create("password") %>
+  userable: valid_rescuer (Rescuer)
+
+valid_adopter_user:
+  email: adopter@mail.com
+  encrypted_password: <%= BCrypt::Password.create("password") %>
+  userable: valid_adopter (Adopter)

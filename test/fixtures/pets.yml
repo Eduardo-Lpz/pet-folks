@@ -1,5 +1,5 @@
 valid_pet:
-  shelter: valid_shelter
+  user: valid_shelter_user
   specie: dog
   name: one_name
   breed: one_breed

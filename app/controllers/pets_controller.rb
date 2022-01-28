@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_user!
 
   def index
     @pets = current_pets
@@ -12,11 +12,11 @@ class PetsController < ApplicationController
 
   def create
     @new_pet = Pet.new(secure_pet_params).tap do |p|
-      p.shelter = current_shelter
+      p.user = current_user
     end
 
     if @new_pet.save
-      redirect_to pets_path
+      redirect_to polymorphic_url([current_user, current_user.userable, Pet])
     else
       render :new, status: :unprocessable_entity
     end
