@@ -5,4 +5,3 @@ valid_shelter:
   phone: 0003334444
   link: http://shelter_site.com
   description: shelter_description
-  is_rescuer: false

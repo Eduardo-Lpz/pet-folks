@@ -1,4 +1,0 @@
-valid_customer:
-  shelter: valid_shelter
-  email: customer@mail.com
-  encrypted_password: <%= BCrypt::Password.create("password") %>
