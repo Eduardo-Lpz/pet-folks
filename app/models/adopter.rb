@@ -1,6 +1,6 @@
 class Adopter < ApplicationRecord
   has_many :users, as: :userable
-  has_one :adoption_preference
+  has_one :adopter_preference
 
   validates :name, presence: true, length: {maximum: 40}
   validates :last_name, presence: true, length: {maximum: 40}

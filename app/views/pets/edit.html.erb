@@ -1,0 +1,5 @@
+<div class="mt-5 md:mt-0 md:col-span-2">
+  <%= form_with model: @pet, url: polymorphic_path([:user, current_user.userable, @pet]), method: :put do |form| %>
+    <%= render "form", form: form %>
+  <% end %>
+</div>

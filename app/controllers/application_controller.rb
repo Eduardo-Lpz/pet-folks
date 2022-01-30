@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_pets
-    @current_pets ||= current_user&.pets
+    @current_pets ||= current_user.pets.order(:created_at)
   end
 
   def shelter?
@@ -19,5 +19,5 @@ class ApplicationController < ActionController::Base
     current_user.userable.is_a? Adopter
   end
 
-  helper_method :adopter?
+  helper_method :adopter?, :rescuer?, :shelter?
 end
