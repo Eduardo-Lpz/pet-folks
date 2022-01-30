@@ -1,9 +1,5 @@
-<h1>New Pet</h1>
-
-<%= render "form", pet: @pet %>
-
-<br>
-
-<div>
-  <%# link_to "Back to admins", admins_path %>
+<div class="mt-5 md:mt-0 md:col-span-2">
+  <%= form_with scope: :pet, url: polymorphic_url([:user, current_user.userable, @pet]) do |form| %>
+    <%= render "form", form: form %>
+  <% end %>
 </div>
