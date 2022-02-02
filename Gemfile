@@ -75,3 +75,5 @@ end
 gem "devise", "~> 4.8", ">= 4.8.1"
 
 gem "activerecord-postgis-adapter", "~> 8.0"
+
+gem "pagy", "~> 5.9", ">= 5.9.3"

@@ -17,8 +17,11 @@
   <body>
     <%= render partial: "shared/navbar" %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div aria-live="assertive" class="fixed inset-0 z-50 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+      <%= turbo_frame_tag "notifications", class: "w-full flex flex-col items-center space-y-4 sm:items-end" do %>
+        <%= render partial: "shared/notification" %>
+      <% end %>
+    </div>
 
     <main>
       <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">

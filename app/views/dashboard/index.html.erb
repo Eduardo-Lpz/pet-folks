@@ -1,6 +1,77 @@
-<%= current_user %>
-<p>---------</p>
-<%= current_user&.userable&.model_name %>
-<p>---------</p>
-<%= current_user.userable.name if current_user%>
-<p>---------</p>
+<%= form_with url: root_path, method: :get, class: "space-y-6 mb-8", data: { controller: "disable-form" } do |form| %>
+  <div class="shadow overflow-hidden sm:rounded-md">
+    <div class="px-4 py-5 bg-white sm:p-6">
+      <div class="grid grid-cols-6 gap-6">
+
+        <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".specie"), class: "block text-sm font-medium text-gray-700" %>
+                <%= form.select :specie, t("activerecord.enums.specie").invert, {selected: "", disabled: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".gender"), class: "block text-sm font-medium text-gray-700" %>
+              <%= form.select :gender, t("activerecord.enums.gender").invert, {selected: "", disabled: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".age"), class: "block text-sm font-medium text-gray-700" %>
+              <%= form.select :age, t("activerecord.enums.age").invert, {selected: "", disabled: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".size"), class: "block text-sm font-medium text-gray-700" %>
+              <%= form.select :size, t("activerecord.enums.size").invert, {selected: "", disabled: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+      <%= form.submit t(".search"), class: "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+    </div>
+  </div>
+<% end %>
+
+<% if @pets.any? %>
+  <%== render partial: "shared/pagination", locals: { pagy: @pagy } %>
+  <div class="grid grid-cols-12 gap-y-12">
+    <div class="col-span-12">
+      <div class="grid grid-cols-10 gap-6" data-controller="pet-alert">
+        <% @pets.each do |pet| %>
+          <div class="group relative col-span-4 sm:col-span-2 lg:col-span-2 shadow-lg rounded-md my-2">
+            <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden lg:h-80 lg:aspect-none rounded-t-md">
+              <% if pet&.images_attachments&.present? %>
+                <%= image_tag pet&.images_attachments&.first, class:"w-full h-full object-center object-cover" %>
+              <% else %>
+                <img src="https://www.myhappypet.es/sites/spmhp/files/adoptar.png" alt="Adopt" class="w-full h-full object-center object-cover group-hover:opacity-75">
+              <% end %>
+            </div>
+            <div class="grid grid-cols-4 justify-items-center">
+
+              <div class="col-span-4 mt-4 mb-2">
+                <p class="text-xl font-medium text-indigo-600">
+                  <%= pet.name.camelize %>
+                </p>
+              </div>
+
+              <div class="col-span-4">
+                <p class="text-sm font-light">
+                  <%= pet.age.camelize %> &#183 <%= pet.breed.camelize %>
+                </p>
+              </div>
+
+              <div class="col-span-4 mb-4">
+                <p class="text-sm font-light">
+                  1 mile away
+                </p>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

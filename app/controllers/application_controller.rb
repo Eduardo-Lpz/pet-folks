@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_pets
-    @current_pets ||= current_user.pets.order(:created_at)
+    @current_pets ||= current_user.pets.order(created_at: :desc)
   end
 
   def shelter?
