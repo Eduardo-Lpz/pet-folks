@@ -1,0 +1,41 @@
+es:
+  labels:
+    sep: asdf
+    pet:
+      sep: asdfsdafsadf
+  shared:
+    navbar:
+      dashboard: Inicio
+      pets: Mascotas
+      login: Iniciar sesión
+      logout: Cerrar sesión
+    pagination:
+      prev: Anterior
+      next: Siguiente
+      pages: Página %{page} de %{pages}
+  pets:
+    index:
+      add_pet: Agregar
+      await:
+        zero: No hay mascotas registradas
+        one: "%{count} mascota en espera de adopción"
+        other: "%{count} mascotas en espera de adopción"
+      request:
+        zero: No hay peticiones de adopción
+        one: "%{count} petición de adopción"
+        other: "%{count} peticiones de adopción"
+      match:
+        zero: No se han entontrado posibles adoptantes
+        one: "%{count} posible adoptante"
+        other: "%{count} posibles adoptantes"
+    form:
+      save: Guardar
+      cancel: Cancelar
+  dashboard:
+    index:
+      prompt: Selecciona un valor
+      specie: Especie
+      gender: Genero
+      age: Edad
+      size: Tamaño
+      search: Buscar

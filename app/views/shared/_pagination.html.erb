@@ -1,0 +1,26 @@
+<% link = pagy_link_proc(pagy) -%>
+<nav aria-label="pager" class="pagy_nav pagination h-14 mt-8 mb-2" role="navigation">
+  <div class="py-2 grid grid-cols-6 gap-3">
+    <div class="col-span-6 sm:col-span-6 md:col-span-4 lg:col-span-4 self-center">
+      <span class="py-2 text-sm font-medium text-left text-gray-700"><%= t(".pages", page: @pagy.page, pages: @pagy.pages) %></span>
+    </div>
+    <div class="col-span-3 sm:col-span-6 md:col-span-1 lg:col-span-1">
+      <div class="flex">
+        <% if pagy.prev -%>
+          <%== link.call(pagy.prev, t(".prev"), 'class="text-left px-4 py-2 font-medium text-white bg-indigo-600 border border-gray-300 button shadow-sm rounded-md grow"') %>
+        <% else -%>
+          <button class="text-left px-4 py-2 button bg-indigo-400 text-gray-200 border border-gray-300 shadow-sm rounded-md grow" disabled="true"><%= t(".prev") %></button>
+        <% end -%>
+      </div>
+    </div>
+    <div class="col-span-3 sm:col-span-6 md:col-span-1 lg:col-span-1">
+      <div class="flex">
+        <% if pagy.next -%>
+          <%== link.call(pagy.next, t(".next"), 'class="text-right px-4 py-2 font-medium text-white bg-indigo-600 border border-gray-300 button shadow-sm rounded-md grow"') %>
+        <% else -%>
+          <button class="text-right px-4 py-2 button bg-indigo-400 text-gray-200 border border-gray-300 shadow-sm rounded-md grow" disabled="true"><%= t(".next") %></button>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</nav>

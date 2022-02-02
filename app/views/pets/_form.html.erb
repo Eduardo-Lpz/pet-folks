@@ -16,22 +16,22 @@
         <div class="grid grid-cols-12 gap-6">
           <div class="col-span-6 sm:col-span-6 lg:col-span-3">
             <%= form.label :specie, class: "block text-sm font-medium text-gray-700" %>
-              <%= form.select :specie, Pet.species, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              <%= form.select :specie, t("activerecord.enums.specie").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
           </div>
 
           <div class="col-span-6 sm:col-span-6 lg:col-span-3">
             <%= form.label :gender, class: "block text-sm font-medium text-gray-700" %>
-            <%= form.select :gender, Pet.genders, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            <%= form.select :gender, t("activerecord.enums.gender").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
           </div>
 
           <div class="col-span-6 sm:col-span-6 lg:col-span-3">
             <%= form.label :age, class: "block text-sm font-medium text-gray-700" %>
-            <%= form.select :age, Pet.ages, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            <%= form.select :age, t("activerecord.enums.age").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
           </div>
 
           <div class="col-span-6 sm:col-span-6 lg:col-span-3">
             <%= form.label :size, class: "block text-sm font-medium text-gray-700" %>
-            <%= form.select :size, Pet.sizes, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            <%= form.select :size, t("activerecord.enums.size").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
     </div>
   </div>
   <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-    <%= form.submit "Save", class: "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
-    <%= link_to "Cancel", polymorphic_url([current_user, current_user.userable, Pet]), class:"mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+    <%= form.submit t(".save"), class: "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+    <%= link_to t(".cancel"), polymorphic_url([current_user, current_user.userable, Pet]), class:"mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
   </div>
 </div>

@@ -19,5 +19,8 @@ module PetFolks
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = "Central Time (US & Canada)"
     config.active_record.implicit_order_column = "created_at"
+
+    config.i18n.available_locales = :es
+    config.i18n.default_locale = :es
   end
 end

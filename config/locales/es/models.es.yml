@@ -1,0 +1,42 @@
+es:
+  activerecord:
+    models:
+      user: Usuario
+      pet: Mascota
+
+    # translation in labels
+    attributes:
+      # # if i want Pet.human_attribute_name "specie.dog"
+      # pet/specie:
+      #   dog: Perro
+      #   cat: Gato
+      pet:
+        name: Nombre
+        breed: Raza
+        specie: Especie
+        gender: Genero
+        age: Edad
+        size: Tamaño
+        images: Imagenes
+        color: Color
+        coat: Pelaje
+        special_needs: Necesidades especiales
+        description: Descripción
+
+    enums:
+      specie:
+        dog: Perro
+        cat: Gato
+      gender:
+        male: Macho
+        female: Hembra
+      age:
+        puppy: Cachorro
+        young: Joven
+        adult: Adulto
+        senior: Senior
+      size:
+        small: Pequeño
+        medium: Mediano
+        large:  Grande
+        extralarge: Gigante
