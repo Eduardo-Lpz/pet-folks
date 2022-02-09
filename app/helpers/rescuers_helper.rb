@@ -1,0 +1,2 @@
+module RescuersHelper
+end

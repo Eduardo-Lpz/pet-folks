@@ -94,9 +94,9 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
 
   create_table "rescuers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.string "address", default: "", null: false
     t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
     t.string "phone", null: false
-    t.text "description", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

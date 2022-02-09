@@ -1,8 +1,4 @@
 es:
-  labels:
-    sep: asdf
-    pet:
-      sep: asdfsdafsadf
   shared:
     navbar:
       dashboard: Inicio
@@ -14,6 +10,15 @@ es:
       next: Siguiente
       pages: Página %{page} de %{pages}
   pets:
+    edit:
+      save: Guardar
+      cancel: Cancelar
+    update:
+      success: Datos correctamente actualizados
+      alert: Ucurrio un error, por favor verifica que la información sea correcta
+    create:
+      success: Nueva mascota agregada
+      alert: Por favor verifica que la información sea correcta
     index:
       add_pet: Agregar
       await:
@@ -28,7 +33,7 @@ es:
         zero: No se han entontrado posibles adoptantes
         one: "%{count} posible adoptante"
         other: "%{count} posibles adoptantes"
-    form:
+    new:
       save: Guardar
       cancel: Cancelar
   dashboard:
@@ -39,3 +44,38 @@ es:
       age: Edad
       size: Tamaño
       search: Buscar
+  rescuers:
+    create:
+      success: Rescatista registrado correctamente
+    new:
+      header: Información del Rescatista
+      save: Guardar
+      cancel: Cancelar
+  shelters:
+    create:
+      success: Albergue registrado correctamente
+    new:
+      header: Información del Albergue
+      save: Guardar
+      cancel: Cancelar
+  adopters:
+    create:
+      success: Adoptante registrado correctamente
+    new:
+      header: Información del Adoptante
+      save: Guardar
+      cancel: Cancelar
+  registrations:
+    index:
+      rescuer: Rescatista
+      rescuer_description: Persona que adapta temporalmente su vivienda para resguardar uno o una cantidad moderada de animales en espera de una adopción.
+      shelter: Albergue
+      shelter_description: Cualquier instalación, asociación o grupo dedicado al rescate de animales. Usualmente posee un nombre distintivo y cuenta con más de diez animales rescatados.
+      adopter: Adoptante
+      adopter_description: Persona de buen corazon que desea tomar la responsabilidad de un animal para darle seguridad, cuidados y el amor que se merece.
+  notifications:
+    confirm: "Esta seguro de eliminar este registro?\nEsta acción no se puede deshacer."
+    notice:
+      deleted: Registro eliminado correctamente.
+    alert:
+      deleted: Ocurrio un problema al eliminar el registro.
