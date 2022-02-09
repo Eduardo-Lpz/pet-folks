@@ -9,6 +9,7 @@ class PetsController < ApplicationController
   end
 
   def show
+    # TODO: show pet info
   end
 
   def new
@@ -27,10 +28,9 @@ class PetsController < ApplicationController
         end
       end
 
-      redirect_to polymorphic_url([current_user, current_user.userable, Pet])
+      redirect_to polymorphic_url([current_user, current_user.userable, Pet]), notice: t(".success")
     else
       render :new, status: :unprocessable_entity
-      # flash.now[:alert] = t("notifications.alert.deleted")
     end
   end
 
@@ -40,9 +40,9 @@ class PetsController < ApplicationController
   def update
     @pet.update! secure_pet_params.reject { |k| k["images"] }
     # TODO: Update attachments
-    redirect_to polymorphic_url([current_user, current_user.userable, Pet]), notice: t("notifications.notice.deleted")
+    redirect_to polymorphic_url([current_user, current_user.userable, Pet]), notice: t(".success")
   rescue
-    redirect_to polymorphic_url([current_user, current_user.userable, Pet]), alert: t("notifications.alert.deleted")
+    redirect_to polymorphic_url([current_user, current_user.userable, Pet]), alert: t(".alert")
   end
 
   def destroy

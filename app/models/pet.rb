@@ -8,7 +8,7 @@ class Pet < ApplicationRecord
   validates :breed, presence: true, length: {maximum: 30}
   validates :coat, presence: true, length: {maximum: 20}
   validates :color, presence: true, length: {maximum: 20}
-  validates :description, presence: true, length: {maximum: 500}
+  validates :description, length: {maximum: 500}
 
   validates :is_adopted, inclusion: [true, false]
 end

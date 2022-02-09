@@ -28,7 +28,7 @@ class AdopterTest < ActiveSupport::TestCase
   test "adopter is invalid when address is invalid" do
     adopter = adopters(:valid_adopter)
 
-    adopter.address = "x" * 81
+    adopter.address = "x" * 121
     refute adopter.valid?
   end
 

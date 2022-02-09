@@ -21,7 +21,7 @@ class ShelterTest < ActiveSupport::TestCase
     shelter.address = nil
     assert shelter.valid?
 
-    shelter.address = "x" * 81
+    shelter.address = "x" * 121
     refute shelter.valid?
   end
 

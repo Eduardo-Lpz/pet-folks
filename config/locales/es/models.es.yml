@@ -4,12 +4,94 @@ es:
       user: Usuario
       pet: Mascota
 
-    # translation in labels
+    errors:
+      models:
+        pet:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 20 caracteres
+            breed:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 30 caracteres
+            coat:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 20 caracteres
+            color:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 20 caracteres
+            description:
+              too_long: No puede exceder los 500 caracteres
+        user:
+          attributes:
+            email:
+              blank: No puede esta vacío
+              invalid: Formato no valido
+              taken: Este correo ya ha sido registrado anteriormente
+            password:
+              blank: No puede esta vacío
+              too_short: Minimo 6 caracteres
+              too_long: Maximo 128 caracteres
+            password_confirmation:
+              confirmation: Contraseñas no coinciden
+        shelter:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 80 caracteres
+            lonlat:
+              blank: Por favor ingrese una dirección valida
+            phone:
+              blank: Por favor ingrese un número telefónico
+        rescuer:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 80 caracteres
+            lonlat:
+              blank: Por favor ingrese una dirección valida
+            phone:
+              blank: Por favor ingrese un número telefónico
+        adopter:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 40 caracteres
+            last_name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 40 caracteres
+            lonlat:
+              blank: Por favor ingrese una dirección valida
+            phone:
+              blank: Por favor ingrese un número telefónico
+
     attributes:
       # # if i want Pet.human_attribute_name "specie.dog"
       # pet/specie:
       #   dog: Perro
       #   cat: Gato
+      user:
+        email: correo electronico
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+      shelter:
+        name: Nombre
+        lonlta: Ubicación
+        phone: Telefono
+        link: Página web
+        address: Dirección
+        description: Descripción
+      adopter:
+        name: Nombres
+        last_name: Apellidos
+        address: Dirección
+        lonlta: Ubicación
+        phone: Telefono
+      rescuer:
+        name: Nombre
+        address: Dirección
+        lonlta: Ubicación
+        phone: Telefono
       pet:
         name: Nombre
         breed: Raza

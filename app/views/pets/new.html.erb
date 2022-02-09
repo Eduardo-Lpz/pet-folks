@@ -1,5 +1,88 @@
 <div class="mt-5 md:mt-0 md:col-span-2">
   <%= form_with scope: :pet, url: polymorphic_url([:user, current_user.userable, @pet]) do |form| %>
-    <%= render "form", form: form %>
+    <div class="shadow overflow-hidden sm:rounded-md">
+      <div class="px-4 py-5 bg-white sm:p-6">
+        <div class="grid grid-cols-6 gap-6">
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+            <%= form.label :name, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :name, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+            <% if @pet.errors[:name].any? %>
+              <div class="block text-sm font-medium text-red-700"><%= @pet.errors.messages_for(:name).first %></div>
+            <% end %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+            <%= form.label :breed, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :breed, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+            <% if @pet.errors[:breed].any? %>
+              <div class="block text-sm font-medium text-red-700"><%= @pet.errors.messages_for(:breed).first %></div>
+            <% end %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <div class="grid grid-cols-12 gap-6">
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label :specie, class: "block text-sm font-medium text-gray-700" %>
+                  <%= form.select :specie, t("activerecord.enums.specie").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label :gender, class: "block text-sm font-medium text-gray-700" %>
+                <%= form.select :gender, t("activerecord.enums.gender").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label :age, class: "block text-sm font-medium text-gray-700" %>
+                <%= form.select :age, t("activerecord.enums.age").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label :size, class: "block text-sm font-medium text-gray-700" %>
+                <%= form.select :size, t("activerecord.enums.size").invert, {}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <%= form.label :images, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.file_field :images, multiple: true, accept: "image/png,image/jpeg", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+            <%= form.label :color, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :color, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+            <% if @pet.errors[:color].any? %>
+              <div class="block text-sm font-medium text-red-700"><%= @pet.errors.messages_for(:color).first %></div>
+            <% end %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+            <%= form.label :coat, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :coat, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+            <% if @pet.errors[:coat].any? %>
+              <div class="block text-sm font-medium text-red-700"><%= @pet.errors.messages_for(:coat).first %></div>
+            <% end %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <%= form.label :special_needs, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.check_box :special_needs %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <%= form.label :description, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_area :description, rows: 10, class: "border border-gray-300 w-full resize-none" %>
+            <% if @pet.errors[:description].any? %>
+              <div class="block text-sm font-medium text-red-700"><%= @pet.errors.messages_for(:description).first %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <%= form.submit t(".save"), class: "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+        <%= link_to t(".cancel"), polymorphic_url([current_user, current_user.userable, Pet]), class:"mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+      </div>
+    </div>
   <% end %>
 </div>
