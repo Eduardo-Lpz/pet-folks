@@ -1,8 +1,12 @@
 es:
+  form:
+    save: Guardar
+    cancel: Cancelar
   shared:
     navbar:
       dashboard: Inicio
       pets: Mascotas
+      profile: Perfil
       login: Iniciar sesión
       logout: Cerrar sesión
     pagination:
@@ -10,9 +14,6 @@ es:
       next: Siguiente
       pages: Página %{page} de %{pages}
   pets:
-    edit:
-      save: Guardar
-      cancel: Cancelar
     update:
       success: Datos correctamente actualizados
       alert: Ucurrio un error, por favor verifica que la información sea correcta
@@ -33,9 +34,6 @@ es:
         zero: No se han entontrado posibles adoptantes
         one: "%{count} posible adoptante"
         other: "%{count} posibles adoptantes"
-    new:
-      save: Guardar
-      cancel: Cancelar
   dashboard:
     index:
       prompt: Selecciona un valor
@@ -49,22 +47,22 @@ es:
       success: Rescatista registrado correctamente
     new:
       header: Información del Rescatista
-      save: Guardar
-      cancel: Cancelar
+    edit:
+      header: Datos generales del Rescatista
   shelters:
     create:
       success: Albergue registrado correctamente
     new:
       header: Información del Albergue
-      save: Guardar
-      cancel: Cancelar
+    edit:
+      header: Datos generales del Albergue
   adopters:
     create:
       success: Adoptante registrado correctamente
     new:
       header: Información del Adoptante
-      save: Guardar
-      cancel: Cancelar
+    edit:
+      header: Datos generales del Adoptante
   registrations:
     index:
       rescuer: Rescatista
@@ -77,5 +75,7 @@ es:
     confirm: "Esta seguro de eliminar este registro?\nEsta acción no se puede deshacer."
     notice:
       deleted: Registro eliminado correctamente.
+      updated: El registro fue actualizado correctamente.
     alert:
+      updated: Ocurrio un error al actualizar, verifica la información.
       deleted: Ocurrio un problema al eliminar el registro.

@@ -47,6 +47,10 @@
               <%= link_to t(".pets"), polymorphic_url([current_user, current_user.userable, Pet]), class:"text-white hover:bg-gray-700 hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium" %>
               <%# (edit-new)_polymorphic_path([current_user, current_user.userable, current_pet_id]) %>
             <% end %>
+            <% if user_signed_in? %>
+              <%= link_to t(".profile"), edit_polymorphic_path([current_user, current_user.userable]), class:"text-white hover:bg-gray-700 hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium" %>
+              <%# (edit-new)_polymorphic_path([current_user, current_user.userable, current_pet_id]) %>
+            <% end %>
           </div>
         </div>
       </div>
