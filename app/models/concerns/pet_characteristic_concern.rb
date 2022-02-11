@@ -11,6 +11,12 @@ module PetCharacteristicConcern
       large: "large",
       extralarge: "extralarge"
     }
+    enum distance: {
+      short_distance: 5_000,
+      small_distance: 10_000,
+      large_distance: 25_000,
+      big_distance: 50_000
+    }
 
     validates :specie, presence: true
     validates :gender, presence: true

@@ -1,0 +1,120 @@
+<div class="bg-white">
+  <div class="max-w-2xl mx-auto py-24 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
+    <div>
+      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"><%= t(".meet", name: @pet.name )%></h2>
+      <p class="mt-4 text-gray-500"><%= @pet.description %></p>
+
+      <div class="py-4">
+        <button
+          data-controller="modal-open"
+          data-action="modal-open#open"
+          class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            <%= t(".adopt", name: @pet.name ) %>
+        </button>
+      </div>
+
+      <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.specie") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= t("activerecord.enums.specie.#{@pet.specie}") %></dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.breed") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= @pet.breed %></dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.age") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= t("activerecord.enums.age.#{@pet.age}") %></dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.gender") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= t("activerecord.enums.gender.#{@pet.gender}") %></dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.size") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= t("activerecord.enums.size.#{@pet.size}") %></dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.coat") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= @pet.coat %></dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.color") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= @pet.color %></dd>
+        </div>
+
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900"><%= t("activerecord.attributes.pet.special_needs") %></dt>
+          <dd class="mt-2 text-sm text-gray-500"><%= @pet.special_needs %></dd>
+        </div>
+      </dl>
+    </div>
+    <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
+      <div class="col-span-2 row-span-2">
+        <% if @pet&.images_attachments&.present? %>
+          <%= image_tag @pet&.images_attachments&.first, class:"w-full h-full object-center object-cover" %>
+        <% else %>
+          <img src="https://www.myhappypet.es/sites/spmhp/files/adoptar.png" alt="Adopt" class="w-full h-full object-center object-cover group-hover:opacity-75">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-controller="modal" data-action="modal-open:toggle@window->modal#toggleModal">
+  <div class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true" data-modal-target="container">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          data-transition-enter="ease-out duration-300"
+          data-transition-enter-active="opacity-0"
+          data-transition-enter-to="opacity-100"
+          data-transition-leave="ease-in duration-200"
+          data-transition-leave-active="opacity-100"
+          data-transition-leave-to="opacity-0"
+          aria-hidden="true"></div>
+
+      <!-- This element is to trick the browser into centering the modal contents. -->
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            data-transition-enter="ease-out duration-300"
+            data-transition-enter-active="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            data-transition-enter-to="opacity-100 translate-y-0 sm:scale-100"
+            data-transition-leave="ease-in duration-200"
+            data-transition-leave-active="opacity-100 translate-y-0 sm:scale-100"
+            data-transition-leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+              <!-- Heroicon name: outline/exclamation -->
+              <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title"><%= t(".request.header")%></h3>
+              <div class="mt-2">
+                <p class="text-sm text-gray-500"><%= t(".request.body")%></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse"
+        >
+          <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+            data-action="modal#toggleModal"
+          ><%= t(".request.send") %></button>
+          <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+            data-action="modal#toggleModal">
+          <%= t(".request.cancel") %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

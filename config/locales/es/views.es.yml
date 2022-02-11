@@ -1,21 +1,33 @@
 es:
+  form:
+    save: Guardar
+    cancel: Cancelar
   shared:
     navbar:
       dashboard: Inicio
       pets: Mascotas
+      profile: Perfil
       login: Iniciar sesión
       logout: Cerrar sesión
     pagination:
       prev: Anterior
       next: Siguiente
-      pages: Página %{page} de %{pages}
+      pages_html: <br>Página %{page} de %{pages}
+      results:
+        one: "%{count} mascota encontrada."
+        other: "%{count} mascotas encontradas"
   pets:
-    edit:
-      save: Guardar
-      cancel: Cancelar
     update:
       success: Datos correctamente actualizados
       alert: Ucurrio un error, por favor verifica que la información sea correcta
+    show:
+      meet: Conoce a %{name}!
+      adopt: Adopta a %{name}
+      request:
+        header: Eviaremos una petición con tus datos.
+        body: Estas de acuerdo?
+        send: Enviar
+        cancel: Cancelar
     create:
       success: Nueva mascota agregada
       alert: Por favor verifica que la información sea correcta
@@ -33,12 +45,12 @@ es:
         zero: No se han entontrado posibles adoptantes
         one: "%{count} posible adoptante"
         other: "%{count} posibles adoptantes"
-    new:
-      save: Guardar
-      cancel: Cancelar
   dashboard:
     index:
+      welcome: Hola de nuevo %{username}!
+      distance_message_html: Encontremos a tu mascota ideal!!!<br>Comencemos buscando a tu alrededor.
       prompt: Selecciona un valor
+      distance: Distancia
       specie: Especie
       gender: Genero
       age: Edad
@@ -49,22 +61,22 @@ es:
       success: Rescatista registrado correctamente
     new:
       header: Información del Rescatista
-      save: Guardar
-      cancel: Cancelar
+    edit:
+      header: Datos generales del Rescatista
   shelters:
     create:
       success: Albergue registrado correctamente
     new:
       header: Información del Albergue
-      save: Guardar
-      cancel: Cancelar
+    edit:
+      header: Datos generales del Albergue
   adopters:
     create:
       success: Adoptante registrado correctamente
     new:
       header: Información del Adoptante
-      save: Guardar
-      cancel: Cancelar
+    edit:
+      header: Datos generales del Adoptante
   registrations:
     index:
       rescuer: Rescatista
@@ -77,5 +89,10 @@ es:
     confirm: "Esta seguro de eliminar este registro?\nEsta acción no se puede deshacer."
     notice:
       deleted: Registro eliminado correctamente.
+      updated: El registro fue actualizado correctamente.
     alert:
+      index:
+        not_found_html: No se encontraron registros con esas caracteristicas.<br><br>Por favor modifica los parametros para encontrar resultados.
+        values: Selecciona algun valor para realizar la busqueda.
+      updated: Ocurrio un error al actualizar, verifica la información.
       deleted: Ocurrio un problema al eliminar el registro.

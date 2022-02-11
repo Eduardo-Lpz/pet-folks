@@ -3,14 +3,19 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, path: "/users", only: [] do
-    resources :shelters, only: [:show, :edit, :update], path: "/shelters" do
+    resources :shelters, only: [:edit, :update], path: "/shelters" do
       resources :pets, path: "/pets"
     end
 
-    resources :rescuers, only: [:show, :edit, :update], path: "/rescuers" do
+    resources :rescuers, only: [:edit, :update], path: "/rescuers" do
       resources :pets, path: "/pets"
     end
+
+    resources :adopters, only: [:edit, :update], path: "/adopter" do
+    end
   end
+
+  resources :pets, only: [:show], path: "/pets"
 
   scope "/registrations" do
     resources :registrations, only: [:index], path: "/"

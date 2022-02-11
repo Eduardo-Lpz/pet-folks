@@ -34,24 +34,20 @@ es:
               too_long: Maximo 128 caracteres
             password_confirmation:
               confirmation: Contraseñas no coinciden
+            lonlat:
+              blank: Por favor ingrese una dirección valida
+            phone:
+              blank: Por favor ingrese un número telefónico
         shelter:
           attributes:
             name:
               blank: No puede estar vacío
               too_long: No puede exceder los 80 caracteres
-            lonlat:
-              blank: Por favor ingrese una dirección valida
-            phone:
-              blank: Por favor ingrese un número telefónico
         rescuer:
           attributes:
             name:
               blank: No puede estar vacío
               too_long: No puede exceder los 80 caracteres
-            lonlat:
-              blank: Por favor ingrese una dirección valida
-            phone:
-              blank: Por favor ingrese un número telefónico
         adopter:
           attributes:
             name:
@@ -60,10 +56,6 @@ es:
             last_name:
               blank: No puede estar vacío
               too_long: No puede exceder los 40 caracteres
-            lonlat:
-              blank: Por favor ingrese una dirección valida
-            phone:
-              blank: Por favor ingrese un número telefónico
 
     attributes:
       # # if i want Pet.human_attribute_name "specie.dog"
@@ -74,24 +66,18 @@ es:
         email: correo electronico
         password: Contraseña
         password_confirmation: Confirmar contraseña
+        phone: Telefono
+        address: Dirección
+        lonlta: Ubicación
       shelter:
         name: Nombre
-        lonlta: Ubicación
-        phone: Telefono
         link: Página web
-        address: Dirección
         description: Descripción
       adopter:
-        name: Nombres
-        last_name: Apellidos
-        address: Dirección
-        lonlta: Ubicación
-        phone: Telefono
+        name: Nombre
+        last_name: Apellido
       rescuer:
         name: Nombre
-        address: Dirección
-        lonlta: Ubicación
-        phone: Telefono
       pet:
         name: Nombre
         breed: Raza
@@ -122,3 +108,9 @@ es:
         medium: Mediano
         large:  Grande
         extralarge: Gigante
+      distance:
+        short_distance: 5km
+        small_distance: 10km
+        large_distance: 25km
+        big_distance: 50km
+
