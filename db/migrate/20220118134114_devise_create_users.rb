@@ -3,6 +3,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     create_table :users, id: :uuid do |t|
       t.references :userable, null: false, polymorphic: true, index: {unique: true}, type: :uuid
 
+      t.string :address
+      t.st_point :lonlat, geographic: true
+      t.string :phone
+
       ## Database authenticatable
       t.string :email, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

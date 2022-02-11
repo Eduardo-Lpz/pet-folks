@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :pets, only: [:show], path: "/pets"
+
   scope "/registrations" do
     resources :registrations, only: [:index], path: "/"
     resources :adopters, only: [:new, :create], path: "/adopter"

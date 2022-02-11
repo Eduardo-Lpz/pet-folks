@@ -13,28 +13,29 @@
           <%= form.text_field :last_name, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
         </div>
 
-        <div class="col-span-6 sm:col-span-6 lg:col-span-3">
-          <%= form.label :email, class:"block text-sm font-medium text-gray-700" %>
-          <%= text_field_tag :email, current_user.email, class: "mt-1 bg-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md", disabled: true %>
-        </div>
+        <%= form.fields_for :users do |u| %>
+          <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+            <%= u.label :email, class:"block text-sm font-medium text-gray-700" %>
+            <%= u.text_field :email, class: "mt-1 bg-gray-300 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md", disabled: true %>
+          </div>
 
-        <div class="col-span-6 sm:col-span-6 lg:col-span-3">
-          <%= form.label :phone, class:"block text-sm font-medium text-gray-700" %>
-          <%= form.telephone_field :phone, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
-        </div>
+          <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+            <%= u.label :phone, class:"block text-sm font-medium text-gray-700" %>
+            <%= u.telephone_field :phone, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+          </div>
 
-        <div class="col-span-6 sm:col-span-6 lg:col-span-6 h-2"></div>
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6 h-2"></div>
 
-        <div class="col-span-6 sm:col-span-6 lg:col-span-6">
-          <%= form.label :address, class:"block text-sm font-medium text-gray-700" %>
-          <%= form.text_field :address, data: { "places-target": "field", action: "keydown->places#preventSubmit" }, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
-        </div>
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <%= u.label :address, class:"block text-sm font-medium text-gray-700" %>
+            <%= u.text_field :address, data: { "places-target": "field", action: "keydown->places#preventSubmit" }, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+          </div>
 
-        <div class="col-span-6 sm:col-span-6 lg:col-span-6">
-          <div data-places-target="map" style="height:400px"></div>
-        </div>
-        <%= form.text_field :lonlat, data: { "places-target": "latLng" }, class: "hidden" %>
-
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <div data-places-target="map" style="height:400px"></div>
+          </div>
+          <%= u.text_field :lonlat, data: { "places-target": "latLng" }, class: "hidden" %>
+        <% end %>
       </div>
     </div>
     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

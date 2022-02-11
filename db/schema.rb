@@ -67,9 +67,6 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
   create_table "adopters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "last_name"
-    t.string "address"
-    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
-    t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,18 +91,12 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
 
   create_table "rescuers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.string "address", default: "", null: false
-    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
-    t.string "phone", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shelters", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.string "address", default: "", null: false
-    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
-    t.string "phone", null: false
     t.string "link", default: ""
     t.text "description", default: ""
     t.datetime "created_at", precision: 6, null: false
@@ -115,6 +106,9 @@ ActiveRecord::Schema.define(version: 2022_01_25_085621) do
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "userable_type", null: false
     t.uuid "userable_id", null: false
+    t.string "address"
+    t.geography "lonlat", limit: {srid: 4326, type: "st_point", geographic: true}
+    t.string "phone"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
