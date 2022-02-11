@@ -1,0 +1,6 @@
+valid_adopter:
+  name: adopter_name
+  last_name: last_name
+  address: adopter_address
+  lonlat: <%= RGeo::Geographic.spherical_factory.point(-116.91727067614308, 32.484628807699515) %>
+  phone: 00033334444

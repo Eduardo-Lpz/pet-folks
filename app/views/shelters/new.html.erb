@@ -1,0 +1,88 @@
+<div class="mt-5 md:mt-0 md:col-span-2">
+  <h1 class="text-3xl font-semibold text-center text-gray-800 pb-4"><%= t(".header")  %></h1>
+  <%= form_with scope: @shelter, url: shelters_path, data: { controller: "places", action: "google-maps-callback@window->places#initializeMap" } do |form| %>
+    <div class="shadow overflow-hidden sm:rounded-md">
+      <div class="px-4 py-5 bg-white sm:p-6">
+        <div class="grid grid-cols-6 gap-6">
+          <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+            <%= form.label :name, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_field :name, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+            <% if @shelter.errors[:name].any? %>
+              <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for(:name).first %></div>
+            <% end %>
+          </div>
+
+          <%= form.fields_for :users do |u| %>
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= u.label :email, class:"block text-sm font-medium text-gray-700" %>
+              <%= u.text_field :email, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+              <% if @shelter.errors["users.email"].any? %>
+                <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for("users.email").first %></div>
+              <% end %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= u.label :password, class:"block text-sm font-medium text-gray-700" %>
+              <%= u.password_field :password, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+              <% if @shelter.errors["users.password"].any? %>
+                <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for("users.password").first %></div>
+              <% end %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= u.label :password_confirmation, class:"block text-sm font-medium text-gray-700" %>
+              <%= u.password_field :password_confirmation, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+              <% if @shelter.errors["users.password_confirmation"].any? %>
+                <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for("users.password_confirmation").first %></div>
+              <% end %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= u.label :phone, class:"block text-sm font-medium text-gray-700" %>
+              <%= u.telephone_field :phone, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+              <% if @shelter.errors["users.phone"].any? %>
+                <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for("users.phone").first %></div>
+              <% end %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label :link, class:"block text-sm font-medium text-gray-700" %>
+              <%= form.text_field :link, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+              <% if @shelter.errors[:link].any? %>
+                <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for(:link).first %></div>
+              <% end %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-6 h-2"></div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+              <%= u.label :address, class:"block text-sm font-medium text-gray-700" %>
+              <%= u.text_field :address, data: { "places-target": "field", action: "keydown->places#preventSubmit" }, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+              <% if @shelter.errors["users.lonlat"].any? %>
+                <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for("users.lonlat").first %></div>
+              <% end %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+              <div data-places-target="map" style="height:400px"></div>
+            </div>
+
+            <%= u.text_field :lonlat, data: { "places-target": "latLng" }, class: "hidden" %>
+          <% end %>
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <%= form.label :description, class:"block text-sm font-medium text-gray-700" %>
+            <%= form.text_area :description, rows: 10, class: "border border-gray-300 w-full resize-none" %>
+            <% if @shelter.errors[:description].any? %>
+              <div class="block text-sm font-medium text-red-700"><%= @shelter.errors.messages_for(:description).first %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <%= form.submit t("form.save"), class: "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+        <%= link_to t("form.cancel"), registrations_path, class:"mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+      </div>
+    </div>
+  <% end %>
+</div>

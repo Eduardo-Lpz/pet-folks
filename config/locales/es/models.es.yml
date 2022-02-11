@@ -1,0 +1,116 @@
+es:
+  activerecord:
+    models:
+      user: Usuario
+      pet: Mascota
+
+    errors:
+      models:
+        pet:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 20 caracteres
+            breed:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 30 caracteres
+            coat:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 20 caracteres
+            color:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 20 caracteres
+            description:
+              too_long: No puede exceder los 500 caracteres
+        user:
+          attributes:
+            email:
+              blank: No puede esta vacío
+              invalid: Formato no valido
+              taken: Este correo ya ha sido registrado anteriormente
+            password:
+              blank: No puede esta vacío
+              too_short: Minimo 6 caracteres
+              too_long: Maximo 128 caracteres
+            password_confirmation:
+              confirmation: Contraseñas no coinciden
+            lonlat:
+              blank: Por favor ingrese una dirección valida
+            phone:
+              blank: Por favor ingrese un número telefónico
+        shelter:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 80 caracteres
+        rescuer:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 80 caracteres
+        adopter:
+          attributes:
+            name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 40 caracteres
+            last_name:
+              blank: No puede estar vacío
+              too_long: No puede exceder los 40 caracteres
+
+    attributes:
+      # # if i want Pet.human_attribute_name "specie.dog"
+      # pet/specie:
+      #   dog: Perro
+      #   cat: Gato
+      user:
+        email: correo electronico
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        phone: Telefono
+        address: Dirección
+        lonlta: Ubicación
+      shelter:
+        name: Nombre
+        link: Página web
+        description: Descripción
+      adopter:
+        name: Nombre
+        last_name: Apellido
+      rescuer:
+        name: Nombre
+      pet:
+        name: Nombre
+        breed: Raza
+        specie: Especie
+        gender: Genero
+        age: Edad
+        size: Tamaño
+        images: Imagenes
+        color: Color
+        coat: Pelaje
+        special_needs: Necesidades especiales
+        description: Descripción
+
+    enums:
+      specie:
+        dog: Perro
+        cat: Gato
+      gender:
+        male: Macho
+        female: Hembra
+      age:
+        puppy: Cachorro
+        young: Joven
+        adult: Adulto
+        senior: Senior
+      size:
+        small: Pequeño
+        medium: Mediano
+        large:  Grande
+        extralarge: Gigante
+      distance:
+        short_distance: 5km
+        small_distance: 10km
+        large_distance: 25km
+        big_distance: 50km
+

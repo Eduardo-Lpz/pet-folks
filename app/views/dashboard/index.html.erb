@@ -1,16 +1,129 @@
-<%= current_user %>
-<p>---------</p>
-<%= current_user.name if current_user%>
-<p>---------</p>
-<%= link_to "User Log In", new_user_session_path, class:"bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" %>
-<p>---------</p>
-<%= button_to "User Delete", destroy_user_session_path, method: :delete, class: 'bg-blue-900 text-white px-3 py-2 rounded-md text-sm font-medium', "data-turbo": false %>
-<p>---------</p>
-<p>---------</p>
-<p>---------</p>
-<%= current_customer %>
-<p>---------</p>
-<%= link_to "Customer Log In", new_customer_session_path, class:"bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" %>
-<p>---------</p>
-<%= button_to "Customer Delete", destroy_customer_session_path, method: :delete, class: 'bg-blue-900 text-white px-3 py-2 rounded-md text-sm font-medium', "data-turbo": false %>
-<p>---------</p>
+<% if user_signed_in? %>
+  <%= form_with url: root_path, method: :get, class: "space-y-6 mb-8", data: { controller: "disable-form" } do |form| %>
+    <div class="overflow-hidden bg-white rounded-lg shadow-lg bg-slate-900 dark:bg-slate-800">
+      <div class="grid grid-cols-12">
+        <div class="col-span-12 lg:col-span-4 p-2">
+          <%# image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x400&markers=color:red|label:A|#{current_user.lonlat.y},#{current_user.lonlat.x}&center=#{current_user.lonlat.y},#{current_user.lonlat.x}&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+          <%# <div class="w-1/3 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1494726161322-5360d4d0eeae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')"></div> %>
+          <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg" alt="Model wearing plain gray basic tee." class="w-full h-full object-center object-cover">
+        </div>
+        <div class="col-span-12 lg:col-span-8">
+          <div class="grid grid-cols-12 gap-6 p-4">
+            <h1 class="col-span-12 text-2xl font-bold text-white">
+              <%= t(".welcome", username: current_user.userable.name) %>
+            </h1>
+            <p class="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6 mt-2 text-md font-medium text-white">
+              <%= t(".distance_message_html") %>
+            </p>
+
+            <div class="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6">
+              <%= form.label t(".distance"), class: "block text-sm font-medium text-white" %>
+                <%= form.select :distance, t("activerecord.enums.distance").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".specie"), class: "block text-sm font-medium text-white" %>
+                <%= form.select :specie, t("activerecord.enums.specie").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".gender"), class: "block text-sm font-medium text-white" %>
+              <%= form.select :gender, t("activerecord.enums.gender").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".age"), class: "block text-sm font-medium text-white" %>
+              <%= form.select :age, t("activerecord.enums.age").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+              <%= form.label t(".size"), class: "block text-sm font-medium text-white" %>
+              <%= form.select :size, t("activerecord.enums.size").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+            </div>
+
+            <div class="col-span-12">
+              <div class="px-4 py-3 flex flex-row-reverse">
+                <%= form.submit t(".search"), class: "mt-3 w-full inline-flex justify-center rounded-md shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <%= form_with url: root_path, method: :get, class: "space-y-6 mb-8", data: { controller: "disable-form" } do |form| %>
+    <div class="shadow overflow-hidden sm:rounded-md">
+      <div class="px-4 py-5 bg-white sm:p-6">
+        <div class="grid grid-cols-6 gap-6">
+
+          <div class="col-span-6 sm:col-span-6 lg:col-span-6">
+            <div class="grid grid-cols-12 gap-6">
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label t(".specie"), class: "block text-sm font-medium text-gray-700" %>
+                  <%= form.select :specie, t("activerecord.enums.specie").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label t(".gender"), class: "block text-sm font-medium text-gray-700" %>
+                <%= form.select :gender, t("activerecord.enums.gender").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label t(".age"), class: "block text-sm font-medium text-gray-700" %>
+                <%= form.select :age, t("activerecord.enums.age").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+
+              <div class="col-span-6 sm:col-span-6 lg:col-span-3">
+                <%= form.label t(".size"), class: "block text-sm font-medium text-gray-700" %>
+                <%= form.select :size, t("activerecord.enums.size").invert, {selected: "", prompt: t(".prompt")}, {class: "mt-1 block w-full py-2 px-3 border border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"} %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <%= form.submit t(".search"), class: "mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @pets.any? %>
+  <%== render partial: "shared/pagination", locals: { pagy: @pagy } %>
+  <div class="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-10 gap-6">
+    <% @pets.each do |pet| %>
+      <div class="group relative col-span-4 sm:col-span-2 lg:col-span-2 shadow-lg rounded-md my-2 hover:opacity-50">
+        <%= link_to pet_path(pet), class:"bg-indigo-600 bg-opacity-75 group-hover:opacity-100 focus:opacity-100" do %>
+          <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden h-80 aspect-none rounded-t-md">
+            <% if pet&.images_attachments&.present? %>
+              <%= image_tag pet&.images_attachments&.first, class:"w-full h-full object-center object-cover" %>
+            <% else %>
+              <img src="https://www.myhappypet.es/sites/spmhp/files/adoptar.png" alt="Adopt" class="w-full h-full object-center object-cover group-hover:opacity-75">
+            <% end %>
+          </div>
+        <% end %>
+        <div class="grid grid-cols-4 justify-items-center">
+
+          <div class="col-span-4 mt-4 mb-2">
+            <p class="text-xl font-medium text-indigo-600">
+              <%= pet.name.camelize %>
+            </p>
+          </div>
+
+          <div class="col-span-4">
+            <p class="text-sm font-light">
+              <%= t("activerecord.enums.age.#{pet.age}") %> &#183 <%= pet.breed.camelize %>
+            </p>
+          </div>
+
+          <div class="col-span-4 mb-4">
+            <p class="text-sm font-light">
+              <%= t("activerecord.enums.size.#{pet.size}") %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

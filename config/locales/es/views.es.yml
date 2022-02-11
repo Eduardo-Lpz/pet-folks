@@ -1,0 +1,98 @@
+es:
+  form:
+    save: Guardar
+    cancel: Cancelar
+  shared:
+    navbar:
+      dashboard: Inicio
+      pets: Mascotas
+      profile: Perfil
+      login: Iniciar sesión
+      logout: Cerrar sesión
+    pagination:
+      prev: Anterior
+      next: Siguiente
+      pages_html: <br>Página %{page} de %{pages}
+      results:
+        one: "%{count} mascota encontrada."
+        other: "%{count} mascotas encontradas"
+  pets:
+    update:
+      success: Datos correctamente actualizados
+      alert: Ucurrio un error, por favor verifica que la información sea correcta
+    show:
+      meet: Conoce a %{name}!
+      adopt: Adopta a %{name}
+      request:
+        header: Eviaremos una petición con tus datos.
+        body: Estas de acuerdo?
+        send: Enviar
+        cancel: Cancelar
+    create:
+      success: Nueva mascota agregada
+      alert: Por favor verifica que la información sea correcta
+    index:
+      add_pet: Agregar
+      await:
+        zero: No hay mascotas registradas
+        one: "%{count} mascota en espera de adopción"
+        other: "%{count} mascotas en espera de adopción"
+      request:
+        zero: No hay peticiones de adopción
+        one: "%{count} petición de adopción"
+        other: "%{count} peticiones de adopción"
+      match:
+        zero: No se han entontrado posibles adoptantes
+        one: "%{count} posible adoptante"
+        other: "%{count} posibles adoptantes"
+  dashboard:
+    index:
+      welcome: Hola de nuevo %{username}!
+      distance_message_html: Encontremos a tu mascota ideal!!!<br>Comencemos buscando a tu alrededor.
+      prompt: Selecciona un valor
+      distance: Distancia
+      specie: Especie
+      gender: Genero
+      age: Edad
+      size: Tamaño
+      search: Buscar
+  rescuers:
+    create:
+      success: Rescatista registrado correctamente
+    new:
+      header: Información del Rescatista
+    edit:
+      header: Datos generales del Rescatista
+  shelters:
+    create:
+      success: Albergue registrado correctamente
+    new:
+      header: Información del Albergue
+    edit:
+      header: Datos generales del Albergue
+  adopters:
+    create:
+      success: Adoptante registrado correctamente
+    new:
+      header: Información del Adoptante
+    edit:
+      header: Datos generales del Adoptante
+  registrations:
+    index:
+      rescuer: Rescatista
+      rescuer_description: Persona que adapta temporalmente su vivienda para resguardar uno o una cantidad moderada de animales en espera de una adopción.
+      shelter: Albergue
+      shelter_description: Cualquier instalación, asociación o grupo dedicado al rescate de animales. Usualmente posee un nombre distintivo y cuenta con más de diez animales rescatados.
+      adopter: Adoptante
+      adopter_description: Persona de buen corazon que desea tomar la responsabilidad de un animal para darle seguridad, cuidados y el amor que se merece.
+  notifications:
+    confirm: "Esta seguro de eliminar este registro?\nEsta acción no se puede deshacer."
+    notice:
+      deleted: Registro eliminado correctamente.
+      updated: El registro fue actualizado correctamente.
+    alert:
+      index:
+        not_found_html: No se encontraron registros con esas caracteristicas.<br><br>Por favor modifica los parametros para encontrar resultados.
+        values: Selecciona algun valor para realizar la busqueda.
+      updated: Ocurrio un error al actualizar, verifica la información.
+      deleted: Ocurrio un problema al eliminar el registro.

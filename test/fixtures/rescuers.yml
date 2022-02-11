@@ -1,0 +1,5 @@
+valid_rescuer:
+  name: rescuer_name
+  address: adopter_address
+  lonlat: <%= RGeo::Geographic.spherical_factory.point(-116.91727067614308, 32.484628807699515) %>
+  phone: 0003334444

@@ -1,9 +1,26 @@
 Rails.application.routes.draw do
   root "dashboard#index"
-  devise_for :customers
   devise_for :users
 
-  scope "/customers" do
-    resources :pets, path: "/pets"
+  resources :users, path: "/users", only: [] do
+    resources :shelters, only: [:edit, :update], path: "/shelters" do
+      resources :pets, path: "/pets"
+    end
+
+    resources :rescuers, only: [:edit, :update], path: "/rescuers" do
+      resources :pets, path: "/pets"
+    end
+
+    resources :adopters, only: [:edit, :update], path: "/adopter" do
+    end
+  end
+
+  resources :pets, only: [:show], path: "/pets"
+
+  scope "/registrations" do
+    resources :registrations, only: [:index], path: "/"
+    resources :adopters, only: [:new, :create], path: "/adopter"
+    resources :rescuers, only: [:new, :create], path: "/rescuer"
+    resources :shelters, only: [:new, :create], path: "/shelter"
   end
 end
